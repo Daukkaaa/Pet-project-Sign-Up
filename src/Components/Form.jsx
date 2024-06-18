@@ -2,11 +2,11 @@ import React from 'react';
 
 const Form = () => {
     return (
-        <div>
-            <form>
-                <div className='form-con'>
-                    <h2>Sign Up</h2>
-                    <div className='full-name'>
+        <div className="form-container">
+            <form className="signup-form">
+                <h2>Registration Form</h2>
+                <div className='full-name'>
+                    <div>
                         <label htmlFor="name">First Name</label>
                         <input
                             type="text"
@@ -14,6 +14,8 @@ const Form = () => {
                             name="name"
                             required
                         />
+                    </div>
+                    <div>
                         <label htmlFor="lastname">Last Name</label>
                         <input
                             type="text"
@@ -22,7 +24,18 @@ const Form = () => {
                             required
                         />
                     </div>
-                    <div className='bio'>
+                </div>
+                <div className='place'>
+                    <div>
+                        <label htmlFor="country">Country</label>
+                        <input
+                            type="text"
+                            id="country"
+                            name="country"
+                            required
+                        />
+                    </div>
+                    <div>
                         <label htmlFor="phone">Phone</label>
                         <input
                             type="tel"
@@ -30,7 +43,10 @@ const Form = () => {
                             name="phone"
                             required
                         />
-
+                    </div>
+                </div>
+                <div className='bio'>
+                    <div>
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
@@ -39,23 +55,7 @@ const Form = () => {
                             required
                         />
                     </div>
-                    <div className='place'>
-                        <label htmlFor="country">Country</label>
-                        <input
-                            type="text"
-                            id="country"
-                            name="country"
-                            required
-                        />
-                        <label htmlFor="city">City</label>
-                        <input
-                            type="text"
-                            id="city"
-                            name="city"
-                            required
-                        />
-                    </div>
-                    <div className='pasword'>
+                    <div>
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
@@ -65,10 +65,10 @@ const Form = () => {
                         />
                     </div>
                 </div>
+                <input type="submit" value="Sign Up" />
             </form>
         </div>
     )
 }
 
 export default Form;
-
