@@ -1,28 +1,23 @@
-import React, { useState } from "react";
-import Form from "./Components/Form.jsx";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import SignUp from "./Components/SignUp.jsx";
+import SignIn from './Components/SignIn.jsx';
+import Home from './Components/Home.jsx';
 import './main.css';
 
 const App = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    country: '',
-    password: ''
-  });
-
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
 
   return (
-    <div>
-      <Form formData={formData} handleChange={handleChange} />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Navigate to="/signup" />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
