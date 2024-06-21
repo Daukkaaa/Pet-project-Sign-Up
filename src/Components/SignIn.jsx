@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const SignIn = () => {
     const [visiblePassword, setVisiblePassword] = useState(false);
-
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -19,7 +20,16 @@ const SignIn = () => {
 
     function onSubmit(e) {
         e.preventDefault();
-        console.log(formData)
+        axios.post("http://localhost:3001/signin", { formData })
+            .then((result) => {
+                console.log(result);
+                if (result.data === "Success") {
+                    navigate('/home');
+                } else {
+                    navigate('/signup');
+                    alert("You are not registered to this service")
+                }
+            })
     }
 
     return (
