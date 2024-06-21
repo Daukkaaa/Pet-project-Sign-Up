@@ -6,6 +6,7 @@ import axios from 'axios';
 const SignUp = () => {
     const [visiblePassword, setVisiblePassword] = useState(false);
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -25,6 +26,15 @@ const SignUp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        if (formData.firstName.trim() === '' ||
+            formData.country.trim() === '' ||
+            formData.phone.trim() === '' ||
+            formData.email.trim() === '' ||
+            formData.password.trim() === '') {
+            setErrorMessage('Please, fill in all required fields');
+            return;
+        }
+
         axios.post('http://localhost:3001/signup', formData)
             .then(result => {
                 console.log(result)
@@ -74,6 +84,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <button type="submit" onClick={onSubmit}>Sign Up</button>
+                {errorMessage && <p className='error-msg'>{errorMessage}</p>}
             </form>
             <div className='already'>
                 <p>Already have account?</p>

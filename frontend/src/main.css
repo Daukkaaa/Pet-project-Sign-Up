@@ -129,3 +129,9 @@ button:hover {
     border: 1px solid green;
     border-radius: 5px;
 }
+
+.error-msg {
+    margin-top: 20px;
+    color: rgb(232, 0, 0);
+    font-size: 16px;
+}

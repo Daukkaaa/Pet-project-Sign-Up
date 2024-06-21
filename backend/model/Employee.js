@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const EmployeeSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    country: String,
-    phone: String,
-    email: String,
-    password: String
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: false},
+    country: {type: String, required: true},
+    phone: {type: String, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
 })
 
 const EmployeeModel = mongoose.model('Employee', EmployeeSchema);

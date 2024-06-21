@@ -6,6 +6,7 @@ import axios from 'axios';
 const SignIn = () => {
     const [visiblePassword, setVisiblePassword] = useState(false);
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -26,8 +27,7 @@ const SignIn = () => {
                 if (result.data === 'Success') {
                     navigate('/home');
                 } else {
-                    navigate('/signup');
-                    alert("You are not registered to this service");
+                    setErrorMessage("Incorrect email or password. Please, try again");
                 }
             })
             .catch(err => console.log(err))
@@ -54,6 +54,7 @@ const SignIn = () => {
                     </div>
                 </div>
                 <button type="submit" onClick={onSubmit}>Sign In</button>
+                {errorMessage && <p className='error-msg'>{errorMessage}</p>}
             </form>
             <div className='already'>
                 <p>Don't have an account?</p>
