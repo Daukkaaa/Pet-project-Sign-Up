@@ -3,6 +3,7 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+
 const SignUp = () => {
     const [visiblePassword, setVisiblePassword] = useState(false);
     const navigate = useNavigate();

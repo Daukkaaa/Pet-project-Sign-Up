@@ -2,14 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const EmployeeModel = require('./model/Employee.js');
+require('dotenv').config();
 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect('mongodb://localhost:27017/Dauka', {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
